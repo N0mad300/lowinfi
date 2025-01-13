@@ -18,7 +18,7 @@ Execute the script without specifying a `-Keyword` or an `-Url` will open the GU
 ```
 > .\lowinfi.ps1
 ```
-![GUI_selector](images/GUI_Selector.png)
+![GUI_selector](Images/GUI_Selector.png)
 
 You can specify to play a specific Youtube video or stream from his URL
 ```
@@ -35,9 +35,9 @@ will be play from the terminal but there is two others `-DisplayMode` available
 ```
 .\lowinfi.ps1 -DisplayMode Normal
 ```
-![Normal](images/Normal.png)
+![Normal](Images/Normal.png)
 
 ```
 .\lowinfi.ps1 -DisplayMode Ascii
 ```
-![Ascii](images/Ascii.png)
+![Ascii](Images/Ascii.png)
