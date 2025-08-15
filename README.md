@@ -38,6 +38,6 @@ will be play from the terminal but there is two others `-DisplayMode` available
 ![Normal](Images/Normal.png)
 
 ```
-.\lowinfi.ps1 -DisplayMode Ascii
+.\lowinfi.ps1 -DisplayMode TCT
 ```
-![Ascii](Images/Ascii.png)
+![Ascii](Images/TCT.png)
