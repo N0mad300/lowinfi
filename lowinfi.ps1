@@ -197,13 +197,13 @@ function Show-Usage {
     Write-Host "    -DisplayMode : Display mode options:"
     Write-Host "                   'NoVideo'  - Audio only (default)"
     Write-Host "                   'Normal'   - Normal video window"
-    Write-Host "                   'Ascii'    - ASCII art video in terminal"
+    Write-Host "                   'TCT'      - Video in terminal using TCT video output driver"
     Write-Host "                   'Menu'     - Show selection menu"
     Write-Host ""
     Write-Host "Examples:"
     Write-Host "    .\lowinfi.ps1 -Keyword lofi"
     Write-Host "    .\lowinfi.ps1 -Url 'https://www.youtube.com/watch?v=jfKfPfyJRdk' -DisplayMode Normal"
-    Write-Host "    .\lowinfi.ps1 -DisplayMode Ascii"
+    Write-Host "    .\lowinfi.ps1 -DisplayMode TCT"
 }
 
 # Main function to play the radio
@@ -211,7 +211,7 @@ function Start-LofiRadio {
     param(
         [string]$Url,
         [string]$Keyword,
-        [ValidateSet("NoVideo", "Normal", "Ascii", "Menu")]
+        [ValidateSet("NoVideo", "Normal", "TCT", "Menu")]
         [string]$DisplayMode = "NoVideo"
     )
 
@@ -251,7 +251,7 @@ function Start-LofiRadio {
         # Get stream URL using yt-dlp for YouTube links
         if ($Url -like "*youtube.com*") {
             # For video modes, get best format that includes video
-            if ($DisplayMode -eq "Normal" -or $DisplayMode -eq "Ascii") {
+            if ($DisplayMode -eq "Normal" -or $DisplayMode -eq "TCT") {
                 $streamUrl = & yt-dlp -f best --get-url $Url
             } else {
                 # For audio-only, get best audio format
@@ -270,7 +270,7 @@ function Start-LofiRadio {
             "Normal" {
                 & mpv --force-window=yes --no-terminal $streamUrl
             }
-            "Ascii" {
+            "TCT" {
                 & mpv --vo=tct --vo-tct-algo=plain --no-terminal $streamUrl
             }
             default {
